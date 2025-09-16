@@ -71,6 +71,13 @@ def main(args):
             write_grasp(args.root, scene_id, grasp, label)
             pbar.update()
 
+    # added 2025 for visualizing gui
+    if args.sim_gui:
+        input("Press Enter to close the simulator...")
+        import pybullet as p
+        while True:
+            p.stepSimulation()
+
     pbar.close()
 
 
@@ -159,3 +166,6 @@ if __name__ == "__main__":
     parser.add_argument("--sim-gui", action="store_true")
     args = parser.parse_args()
     main(args)
+
+
+
